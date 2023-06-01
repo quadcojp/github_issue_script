@@ -7,7 +7,7 @@ function main() {
 
     function getColumnNo(columnKey) {
       let colNo = 1;
-      let res = null;
+      let res = 99;
       while (true) {
         let columnName = sheet.getRange(headerRow, colNo).getValue();
 
