@@ -4,6 +4,8 @@ Create Github issue from Google Sheets using Google App Script.
 
 See [here](https://github.com/sodavinchheng-quad/github_issue_script/issues) for examples.
 
+[How it works](#how-it-works)
+
 ### Project Setup
 
 1. Copy file content to Google App Script
@@ -20,5 +22,21 @@ See [here](https://github.com/sodavinchheng-quad/github_issue_script/issues) for
 5. Make sure repo is checked
 6. Generate token
 7. Copy the token and save it
- 
-<kbd><img width="1460" alt="Screenshot 2023-06-01 at 16 15 02" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/f76f7ab1-e560-4171-90be-2b2a44472402"></kbd>
+
+<kbd><img width="720" alt="Screenshot 2023-06-01 at 16 15 02" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/f76f7ab1-e560-4171-90be-2b2a44472402"></kbd>
+
+### <a name="how-it-works"></a> How it works
+
+- Loops through all sheets in the active spreadsheet
+- In each sheet, loop through all rows starting from 3rd row (1st and 2nd row are headers)
+- In each row, check if there is No, and テストケース
+  - If empty No. or テストケース, move on to the next sheet
+  - If there is both No. and テストケース, check if there is any NG in iOS, android, or PC
+    - If no NG, move on to next row
+    - If NG, check if Github link already exists at the end of the row
+      - If exists, move on to next row
+      - If not, create Github issue, then paste the link at the end of the row
+
+<kbd>
+ <img width="240" alt="Screenshot 2023-06-01 at 16 15 02" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/2f07bfb2-8e7c-45eb-ad84-1b446924613e">
+</kbd>
