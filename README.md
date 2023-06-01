@@ -1,5 +1,9 @@
 ## github_issue_script
 
+Create Github issue from Google Sheets using Google App Script.
+
+See [here](https://github.com/sodavinchheng-quad/github_issue_script/issues) for examples.
+
 ### Project Setup
 
 1. Copy file content to Google App Script
