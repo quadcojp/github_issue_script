@@ -38,5 +38,5 @@ See [here](https://github.com/sodavinchheng-quad/github_issue_script/issues) for
       - If not, create Github issue, then paste the link at the end of the row
 
 <kbd>
- <img width="240" alt="Screenshot 2023-06-01 at 16 15 02" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/2f07bfb2-8e7c-45eb-ad84-1b446924613e">
+ <img width="240" alt="Screenshot 2023-06-01 at 16 15 02" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/abe23dbd-4cdd-46c7-8379-6210d7e86347">
 </kbd>
