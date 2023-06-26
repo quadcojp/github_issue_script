@@ -61,7 +61,7 @@ function main() {
 
         const page = sheet.getRange(rowNo, getColumnNo('page')).getValue();
 
-        const title = `${sheetName} No.${number} ${page} ${testCase}`;
+        const title = `[${sheetName}-${number}] ${page}　${testCase}`;
         const body = bodyTemplate
           .replace('{SHEET_LINK}', sheetLink)
           .replace('{SHEET_NAME}', sheetName)
