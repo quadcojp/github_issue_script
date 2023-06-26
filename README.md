@@ -11,8 +11,6 @@ See [here](https://github.com/sodavinchheng-quad/github_issue_script/issues) for
 1. Copy file content to Google App Script
 2. Set config.js items:
 - **accessToken**: Github access token ([How to get Github access token](#how-to-get-github-access-token))
-- **githubUsername**: Github username or organization name
-- **repositoryName**: Target repository name
 
 ### <a name="how-to-get-github-access-token"></a> How to get Github access token
 1. Go to Github settings > Developer settings > Personal access tokens > Tokens (classic)
@@ -39,4 +37,5 @@ See [here](https://github.com/sodavinchheng-quad/github_issue_script/issues) for
 
 |How it works|Result|
 |--|--|
-|<kbd><img width="260" alt="Screenshot 2023-06-01 at 16 15 02" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/abe23dbd-4cdd-46c7-8379-6210d7e86347"></kbd>|<kbd><img width="700" alt="Screenshot 2023-06-05 at 11 29 41" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/a9146af6-195c-4a66-b1b8-894a60c6ccdf">  </kbd>|
+|<kbd><img width="260" alt="Screenshot 2023-06-01 at 16 15 02" src="https://github.com/sodavinchheng-quad/github_issue_script/assets/108704153/abe23dbd-4cdd-46c7-8379-6210d7e86347"></kbd>|<kbd><img width="935" alt="Screenshot 2023-06-26 at 15 50 09" src="https://github.com/quadcojp/github_issue_script/assets/108704153/1276db5d-c24d-49cc-b209-c5fd9c806826">  </kbd>|
+
