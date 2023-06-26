@@ -1,28 +1,26 @@
 const accessToken = '';
-const githubUsername = '';
-const repositoryName = '';
 const baseUrl = 'https://api.github.com/repos/';
 
 const bodyTemplate = `
-## 問題発生の経緯 | Background of the Problem
+## テストケース | Test case
 
-{SHEET_LINK}
-テストケース番号: {TEST_CASE_NUMBER}
+URL: {SHEET_LINK}
+Case: {SHEET_NAME} No.{TEST_CASE_NUMBER}
 
-{PROBLEM_BACKGROUND}
+{TEST_CASE}
 
 ## 問題の詳細 | Details of the Problem
 
-画面もしくはAPIのID: {SCREEN_OR_API_ID}
+### 期待する結果 | Expected
+{EXPECTED_RESULT}
 
-{PROBLEM_DETAIL}
+### 結果 | Results
+{ACTUAL_RESULT}
 
 ### 再現手順 | How to reproduce
-
 {HOW_TO_REPRODUCE}
 
-## あるべき姿 | Correct behavior
-
-{CORRECT_BEHAVIOR}
+## 修正方法 | How to fix
+{HOW_TO_FIX}
 
 `;

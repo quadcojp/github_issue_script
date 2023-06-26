@@ -2,8 +2,23 @@ const activeSheet = SpreadsheetApp.getActiveSpreadsheet();
 const sheets = activeSheet.getSheets();
 
 function main() {
+  const labels = [];
+  let githubUsername = '';
+  let repositoryName = '';
   for (let sheetNo = 0; sheetNo < sheets.length; sheetNo++) {
     const sheet = sheets[sheetNo];
+
+    if (sheet.getName() === 'config') {
+      const label = sheet.getRange(configRows['label'], configValueColumn).getValue();
+      labels.push(label);
+
+      let repository = sheet.getRange(configRows['repository'], configValueColumn).getValue();
+      repository = repository.replace("https://github.com/", "").split("/");
+      githubUsername = repository[0];
+      repositoryName = repository[1];
+
+      continue;
+    }
 
     function getColumnNo(columnKey) {
       let colNo = 1;
@@ -40,25 +55,30 @@ function main() {
       const android = sheet.getRange(rowNo, getColumnNo('android')).getValue();
       const pc = sheet.getRange(rowNo, getColumnNo('pc')).getValue();
 
-      if (ios === 'NG' || android === 'NG' || pc === 'NG') {
+      if (ios.includes('NG') || android.includes('NG') || pc.includes('NG')) {
         const sheetLink = `https://docs.google.com/spreadsheets/d/${activeSheet.getId()}/edit#gid=${sheet.getSheetId()}&range=${rowNo}:${rowNo}`;
+        const sheetName = sheet.getName();
 
-        const title = testCase;
+        const page = sheet.getRange(rowNo, getColumnNo('page')).getValue();
+
+        const title = `${sheetName} No.${number} ${page} ${testCase}`;
         const body = bodyTemplate
           .replace('{SHEET_LINK}', sheetLink)
+          .replace('{SHEET_NAME}', sheetName)
           .replace('{TEST_CASE_NUMBER}', number)
-          .replace('{PROBLEM_BACKGROUND}', testCase)
-          .replace('{SCREEN_OR_API_ID}', sheet.getName())
-          .replace('{PROBLEM_DETAIL}', sheet.getRange(rowNo, getColumnNo('actual_result')).getValue())
-          .replace('{HOW_TO_REPRODUCE}', sheet.getRange(rowNo, getColumnNo('operation')).getValue())
-          .replace('{CORRECT_BEHAVIOR}', sheet.getRange(rowNo, getColumnNo('expected_result')).getValue());
+          .replace('{TEST_CASE}', testCase)
+          .replace('{EXPECTED_RESULT}', sheet.getRange(rowNo, getColumnNo('expected_result')).getValue())
+          .replace('{ACTUAL_RESULT}', sheet.getRange(rowNo, getColumnNo('actual_result')).getValue())
+          .replace('{HOW_TO_REPRODUCE}', sheet.getRange(rowNo, getColumnNo('how_to_reproduce')).getValue())
+          .replace('{HOW_TO_FIX}', sheet.getRange(rowNo, getColumnNo('how_to_fix')).getValue());
 
         const payload = {
           title,
-          body
+          body,
+          labels,
         };
 
-        const url = createIssue(payload);
+        const url = createIssue(githubUsername, repositoryName, payload);
 
         sheet.getRange(rowNo, getColumnNo('issue')).setValue(url);
         console.log('New Issue Created: ', url);
